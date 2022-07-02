@@ -17,12 +17,15 @@ class ConsoleWriterTest {
     @Test
     @DisplayName("should correctly write questions and answers to the output stream")
     void shouldWriteQuestionsWithAnswersInCorrectFormat() {
+        // given
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         ConsoleWriter consoleWriter = new ConsoleWriter(new PrintStream(out));
 
+        // when
         List<Question> questions = getQuestions();
         consoleWriter.write(questions);
 
+        // then
         String expectedOutput = """
                 Java survey, please choose one possible answer from the questions:
                   1. Is it possible to have multiple inheritance in Java?

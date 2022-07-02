@@ -9,7 +9,9 @@
 
     <util:constant id="out" static-field="java.lang.System.out"/>
 
-    <bean id="questionsParser" class="ru.otus.spring.hw01.services.impl.QuestionsParser">
+    <bean id="resourceFileReader" class="ru.otus.spring.hw01.services.impl.ResourceFileReader"/>
+
+    <bean id="questionsParser" class="ru.otus.spring.hw01.services.impl.CsvQuestionsParser">
         <constructor-arg name="questionsSeparator" value=","/>
         <constructor-arg name="answersSeparator" value=";"/>
     </bean>
@@ -17,6 +19,7 @@
     <bean id="questionsReader" class="ru.otus.spring.hw01.services.impl.CsvFileReader">
         <constructor-arg name="filepath" value="/questions.csv"/>
         <constructor-arg name="questionsParser" ref="questionsParser"/>
+        <constructor-arg name="resourceFileReader" ref="resourceFileReader"/>
     </bean>
 
     <bean id="questionsWriter" class="ru.otus.spring.hw01.services.impl.ConsoleWriter">

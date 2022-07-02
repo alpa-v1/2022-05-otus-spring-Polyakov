@@ -4,12 +4,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.otus.spring.hw01.domain.Question;
 import ru.otus.spring.hw01.services.impl.CsvFileReader;
-import ru.otus.spring.hw01.services.impl.QuestionsParser;
+import ru.otus.spring.hw01.services.impl.CsvQuestionsParser;
+import ru.otus.spring.hw01.services.impl.ResourceFileReader;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyList;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -19,14 +21,31 @@ class CsvFileReaderTest {
     @Test
     @DisplayName("should correctly read questions from csv file")
     void shouldCorrectlyReadQuestionsFromCsvFile() {
-        QuestionsParser questionsParser = mock(QuestionsParser.class);
-        when(questionsParser.parse(anyList())).thenReturn(getQuestions());
-        CsvFileReader csvFileReader = new CsvFileReader("/questions.csv", questionsParser);
+        // given
+        ResourceFileReader resourceFileReader = mock(ResourceFileReader.class);
+        when(resourceFileReader.readAllLines(anyString())).thenReturn(getQuestionLines());
 
+        CsvQuestionsParser questionsParser = mock(CsvQuestionsParser.class);
+        when(questionsParser.parse(anyList())).thenReturn(getQuestions());
+
+        CsvFileReader csvFileReader = new CsvFileReader("/questions.csv", questionsParser, resourceFileReader);
+
+        // when
         List<Question> questions = csvFileReader.read();
 
+        // then
         List<Question> expectedQuestions = getQuestions();
         assertThat(questions).isEqualTo(expectedQuestions);
+    }
+
+    private List<String> getQuestionLines() {
+        return List.of(
+                "How many OOP principles exist?,one;three;five;seven;nine",
+                "Is it possible to have multiple inheritance in Java?,no;yes",
+                "What design pattern name is correct?,Designer;Element;Adapter",
+                "How many primitive types java has?,five;four;eight;seven",
+                "Which class do all classes in Java extend?,Proxy;Object;Class;Entity"
+        );
     }
 
     private List<Question> getQuestions() {

@@ -11,7 +11,7 @@ import static java.lang.String.format;
 import static ru.otus.spring.hw01.util.Validations.requireSize;
 
 @RequiredArgsConstructor
-public class QuestionsParser {
+public class CsvQuestionsParser {
 
     private static final int VALID_SPLIT_LINE_LENGTH = 2;
 
@@ -19,7 +19,7 @@ public class QuestionsParser {
     private final String answersSeparator;
 
     public List<Question> parse(List<String> lines) {
-        return lines.stream().map(this::parse).toList();
+        return lines.stream().skip(1).map(this::parse).toList();
     }
 
     public Question parse(String line) {
