@@ -1,13 +1,53 @@
 package ru.otus.spring.hw02.services.students;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 import ru.otus.spring.hw02.domain.Answer;
 import ru.otus.spring.hw02.domain.Question;
+import ru.otus.spring.hw02.services.io.InputOutputService;
+import ru.otus.spring.hw02.services.questions.QuestionsWriter;
 
-public interface StudentInputService {
+import static java.lang.String.format;
 
-    String askName(String type);
+@Service
+@RequiredArgsConstructor
+public class StudentInputService {
 
-    Answer askQuestion(Question question);
+    private final InputOutputService io;
+    private final QuestionsWriter questionsWriter;
+    private final StudentInputValidationService studentInputValidationService;
 
-    boolean askContinue();
+    public String askName(String type) {
+        io.write(format("%s - ", type));
+        String name = io.readLine();
+        while (!studentInputValidationService.validateStudentName(name)) {
+            io.write(format("Incorrect format of input - [%s], please try again.\n", name));
+            io.write(format("%s - ", type));
+            name = io.readLine();
+        }
+        return name;
+    }
+
+    public Answer askQuestion(Question question) {
+        questionsWriter.write(question);
+        io.write("Please choose the number of your answer - ");
+        String indexOfAnswer = io.readLine();
+        while (!studentInputValidationService.validateSelectedAnswer(indexOfAnswer, question.getAnswersSize())) {
+            io.write(format("Incorrect format of input - [%s], please try again.\n", indexOfAnswer));
+            io.write("Please choose the number of your answer - ");
+            indexOfAnswer = io.readLine();
+        }
+        return question.getAnswer(Integer.parseInt(indexOfAnswer) - 1);
+    }
+
+    public boolean askContinue() {
+        io.write("Do you want to start the survey again? please enter - y/n\n");
+        String continueCommand = io.readLine();
+        while (!studentInputValidationService.validateContinueCommand(continueCommand)) {
+            io.write("Incorrect format of input, please try again.\n");
+            io.write("Please enter - y/n\n");
+            continueCommand = io.readLine();
+        }
+        return continueCommand.equalsIgnoreCase("y");
+    }
 }

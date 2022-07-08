@@ -8,5 +8,6 @@ Alexey Polyakov / Алексей Поляков<br>
 ### Список директорий с заданиями
 
 1. hw01<br>
+2. hw02<br>
 
 Домашнее задание выполнено для курса - "Разработчик на Spring Framework" - https://otus.ru/lessons/javaspring/

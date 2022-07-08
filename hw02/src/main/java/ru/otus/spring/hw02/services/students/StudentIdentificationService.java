@@ -1,9 +1,8 @@
-package ru.otus.spring.hw02.services.students.impl;
+package ru.otus.spring.hw02.services.students;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.otus.spring.hw02.domain.Student;
-import ru.otus.spring.hw02.services.students.StudentInputService;
 
 @Service
 @RequiredArgsConstructor

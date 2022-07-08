@@ -16,7 +16,7 @@ public class QuestionsDataGenerator {
         ));
     }
 
-    public static List<String> getQuestionLinesWithHeader() {
+    public static List<String> getCorrectlyFormattedQuestionLines() {
         return List.of(
                 "order, question, answers",
                 "1,How many OOP principles exist?,one;three-true;five;seven;nine",
@@ -27,10 +27,33 @@ public class QuestionsDataGenerator {
         );
     }
 
-    public static List<String> getQuestionLines() {
+    public static List<String> getQuestionLinesWithoutMandatoryField() {
         return List.of(
-                "1,How many OOP principles exist?,one;three-true;five;seven;nine",
+                "order, question, answers",
+                "1,How many OOP principles exist?",
                 "2,Is it possible to have multiple inheritance in Java?,no-true;yes",
+                "3,What design pattern name is correct?,Designer;Element;Adapter-true",
+                "4,How many primitive types java has?,five;four;eight-true;seven",
+                "5,Which class do all classes in Java extend?,Proxy;Object-true;Class;Entity"
+        );
+    }
+
+    public static List<String> getQuestionLinesWithIncorrectOrderValue() {
+        return List.of(
+                "order, question, answers",
+                "t,How many OOP principles exist?,one;three-true;five;seven;nine",
+                "2,Is it possible to have multiple inheritance in Java?,no-true;yes",
+                "3,What design pattern name is correct?,Designer;Element;Adapter-true",
+                "4,How many primitive types java has?,five;four;eight-true;seven",
+                "5,Which class do all classes in Java extend?,Proxy;Object-true;Class;Entity"
+        );
+    }
+
+    public static List<String> getQuestionLinesWithIncorrectMarkedAnswer() {
+        return List.of(
+                "order, question, answers",
+                "1,How many OOP principles exist?,one;three-true;five;seven;nine",
+                "2,Is it possible to have multiple inheritance in Java?,no-test;yes",
                 "3,What design pattern name is correct?,Designer;Element;Adapter-true",
                 "4,How many primitive types java has?,five;four;eight-true;seven",
                 "5,Which class do all classes in Java extend?,Proxy;Object-true;Class;Entity"

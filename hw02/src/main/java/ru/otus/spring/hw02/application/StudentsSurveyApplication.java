@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 import ru.otus.spring.hw02.domain.Student;
 import ru.otus.spring.hw02.domain.SurveyResult;
 import ru.otus.spring.hw02.services.students.GreetingService;
+import ru.otus.spring.hw02.services.students.StudentIdentificationService;
 import ru.otus.spring.hw02.services.students.StudentInputService;
-import ru.otus.spring.hw02.services.students.impl.StudentIdentificationService;
 import ru.otus.spring.hw02.services.survey.SurveyResultWriter;
-import ru.otus.spring.hw02.services.survey.impl.StudentSurveyService;
+import ru.otus.spring.hw02.services.survey.StudentSurveyService;
 
 @Service
 @RequiredArgsConstructor

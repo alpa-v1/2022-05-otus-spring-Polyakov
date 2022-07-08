@@ -1,4 +1,4 @@
-package ru.otus.spring.hw02.services.students.impl;
+package ru.otus.spring.hw02.services.students;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package ru.otus.spring.hw02.services.survey.impl;
+package ru.otus.spring.hw02.services.survey;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

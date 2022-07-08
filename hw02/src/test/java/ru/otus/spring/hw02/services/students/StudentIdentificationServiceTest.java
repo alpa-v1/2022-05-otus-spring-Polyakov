@@ -2,34 +2,40 @@ package ru.otus.spring.hw02.services.students;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoSettings;
 import ru.otus.spring.hw02.domain.Student;
-import ru.otus.spring.hw02.services.students.impl.StudentIdentificationService;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.BDDMockito.given;
 
-@DisplayName("Student identification service")
-public class StudentIdentificationServiceTest {
+@MockitoSettings
+@DisplayName("Given student identification service")
+class StudentIdentificationServiceTest {
+
+    @Mock
+    StudentInputService studentInputService;
+
+    @InjectMocks
+    StudentIdentificationService studentIdentificationService;
 
     @Test
-    @DisplayName("should correctly identify student")
-    void shouldCorrectlyIdentifyStudent() {
+    @DisplayName("when student should be identified, then return student object with specified first and last name")
+    void when_StudentShouldBeIdentified_then_ReturnStudentObjectWithSpecifiedFirstAndLastName() {
         // given
-        StudentInputService studentInputService = mock(StudentInputService.class);
-        when(studentInputService.askName(anyString())).thenReturn("Test");
-        StudentIdentificationService studentIdentificationService = new StudentIdentificationService(studentInputService);
+        given(studentInputService.askName(anyString())).willReturn("First").willReturn("Student");
 
         // when
-        Student identifiedStudent = studentIdentificationService.identify();
+        Student actualStudent = studentIdentificationService.identify();
 
         // then
         Student expectedStudent = getStudent();
-        assertThat(identifiedStudent).isEqualTo(expectedStudent);
+        assertThat(actualStudent).isEqualTo(expectedStudent);
     }
 
-    private Student getStudent() {
-        return new Student("Test", "Test");
+    Student getStudent() {
+        return new Student("First", "Student");
     }
 }

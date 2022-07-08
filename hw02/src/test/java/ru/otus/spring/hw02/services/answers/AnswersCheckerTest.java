@@ -1,7 +1,10 @@
 package ru.otus.spring.hw02.services.answers;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ArgumentsSource;
+import ru.otus.spring.hw02.argumentproviders.SurveyResultArgumentProvider;
 import ru.otus.spring.hw02.domain.Answer;
 import ru.otus.spring.hw02.domain.Student;
 import ru.otus.spring.hw02.domain.SurveyResult;
@@ -10,40 +13,24 @@ import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-@DisplayName("Answers checker")
-public class AnswersCheckerTest {
+@DisplayName("Given answers checker")
+class AnswersCheckerTest {
 
-    @Test
-    @DisplayName("should check that student passed the survey if he has specified amount of correct answers")
-    void shouldCheckThatStudentCanPassTheSurvey() {
-        // given
-        AnswersChecker answersChecker = new AnswersChecker(4);
+    AnswersChecker answersChecker;
 
+    @BeforeEach
+    void setup() {
+        answersChecker = new AnswersChecker(4);
+    }
+
+    @DisplayName("when student has provided his answers, then count answers and return survey result")
+    @ParameterizedTest(name = "{index} - for {2}")
+    @ArgumentsSource(SurveyResultArgumentProvider.class)
+    void when_StudentHasIncorrectAmountOfAnswers_then_ReturnFailedSurveyResult(Student student, List<Answer> answers, SurveyResult expectedSurveyResult) {
         // when
-        Student student = getStudent();
-        List<Answer> answers = getAnswers();
-        SurveyResult surveyResult = answersChecker.check(student, answers);
+        SurveyResult actualSurveyResult = answersChecker.check(student, answers);
 
         // then
-        SurveyResult passedSurveyResult = getPassedSurveyResult(student);
-        assertThat(surveyResult).isEqualTo(passedSurveyResult);
-    }
-
-    private Student getStudent() {
-        return new Student("Test", "Student");
-    }
-
-    private List<Answer> getAnswers() {
-        return List.of(
-                new Answer("one", true),
-                new Answer("three", true),
-                new Answer("five", true),
-                new Answer("seven", true),
-                new Answer("nine", false)
-        );
-    }
-
-    private SurveyResult getPassedSurveyResult(Student student) {
-        return new SurveyResult(student, true, 4);
+        assertThat(actualSurveyResult).isEqualTo(expectedSurveyResult);
     }
 }
