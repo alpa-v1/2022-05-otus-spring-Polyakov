@@ -1,21 +1,21 @@
-package ru.otus.spring.hw01.services;
+package ru.otus.spring.hw01.services.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import ru.otus.spring.hw01.services.impl.ResourceFileReader;
+import ru.otus.spring.hw01.services.ResourceFileReader;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Resource file reader")
-public class ResourceFileReaderTest {
+class ResourceAsStreamFileReaderTest {
 
     @Test
     @DisplayName("should correctly read questions from csv file")
     void shouldCorrectlyReadQuestionsFromCsvFile() {
         // given
-        ResourceFileReader resourceFileReader = new ResourceFileReader();
+        ResourceFileReader resourceFileReader = new ResourceAsStreamFileReader();
 
         // when
         List<String> lines = resourceFileReader.readAllLines("/questions.csv");

@@ -1,11 +1,11 @@
-package ru.otus.spring.hw01.services;
+package ru.otus.spring.hw01.services.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.otus.spring.hw01.domain.Question;
-import ru.otus.spring.hw01.services.impl.CsvFileReader;
-import ru.otus.spring.hw01.services.impl.CsvQuestionsParser;
-import ru.otus.spring.hw01.services.impl.ResourceFileReader;
+import ru.otus.spring.hw01.services.QuestionsParser;
+import ru.otus.spring.hw01.services.QuestionsReader;
+import ru.otus.spring.hw01.services.ResourceFileReader;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@DisplayName("CSV file reader")
+@DisplayName("Csv file reader")
 class CsvFileReaderTest {
 
     @Test
@@ -25,13 +25,13 @@ class CsvFileReaderTest {
         ResourceFileReader resourceFileReader = mock(ResourceFileReader.class);
         when(resourceFileReader.readAllLines(anyString())).thenReturn(getQuestionLines());
 
-        CsvQuestionsParser questionsParser = mock(CsvQuestionsParser.class);
+        QuestionsParser questionsParser = mock(QuestionsParser.class);
         when(questionsParser.parse(anyList())).thenReturn(getQuestions());
 
-        CsvFileReader csvFileReader = new CsvFileReader("/questions.csv", questionsParser, resourceFileReader);
+        QuestionsReader questionsReader = new CsvFileReader("/questions.csv", questionsParser, resourceFileReader);
 
         // when
-        List<Question> questions = csvFileReader.read();
+        List<Question> questions = questionsReader.read();
 
         // then
         List<Question> expectedQuestions = getQuestions();

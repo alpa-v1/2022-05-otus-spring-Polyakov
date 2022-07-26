@@ -1,9 +1,9 @@
-package ru.otus.spring.hw01.services;
+package ru.otus.spring.hw01.services.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.otus.spring.hw01.domain.Question;
-import ru.otus.spring.hw01.services.impl.ConsoleWriter;
+import ru.otus.spring.hw01.services.QuestionsWriter;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -19,7 +19,7 @@ class ConsoleWriterTest {
     void shouldWriteQuestionsWithAnswersInCorrectFormat() {
         // given
         ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ConsoleWriter consoleWriter = new ConsoleWriter(new PrintStream(out));
+        QuestionsWriter consoleWriter = new ConsoleWriter(new PrintStream(out));
 
         // when
         List<Question> questions = getQuestions();
