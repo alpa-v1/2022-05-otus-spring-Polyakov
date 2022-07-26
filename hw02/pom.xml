@@ -72,7 +72,7 @@
                         </goals>
                         <configuration>
                             <classifier>executable</classifier>
-                            <mainClass>ru.otus.spring.hw01.Main</mainClass>
+                            <mainClass>ru.otus.spring.hw02.Main</mainClass>
                         </configuration>
                     </execution>
                 </executions>

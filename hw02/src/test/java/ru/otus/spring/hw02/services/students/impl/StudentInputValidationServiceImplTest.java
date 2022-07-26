@@ -1,19 +1,20 @@
-package ru.otus.spring.hw02.services.students;
+package ru.otus.spring.hw02.services.students.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import ru.otus.spring.hw02.services.students.StudentInputValidationService;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DisplayName("Given student input validation service")
-class StudentInputValidationServiceTest {
+class StudentInputValidationServiceImplTest {
 
-    StudentInputValidationService studentInputValidationService;
+    private StudentInputValidationService studentInputValidationService;
 
     @BeforeEach
     void setup() {
-        studentInputValidationService = new StudentInputValidationService();
+        studentInputValidationService = new StudentInputValidationServiceImpl();
     }
 
     @Test

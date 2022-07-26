@@ -1,11 +1,11 @@
-package ru.otus.spring.hw02.services.questions;
+package ru.otus.spring.hw02.services.questions.impl;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.otus.spring.hw02.exception.ResourceFileNotFoundException;
-import ru.otus.spring.hw02.services.questions.impl.ResourceFileReader;
+import ru.otus.spring.hw02.services.questions.ResourceFileReader;
 
 import java.util.List;
 
@@ -13,13 +13,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static ru.otus.spring.hw02.util.QuestionsDataGenerator.getCorrectlyFormattedQuestionLines;
 
 @DisplayName("Given resource file reader")
-class ResourceFileReaderTest {
+class ResourceAsStreamFileReaderTest {
 
-    ResourceFileReader resourceFileReader;
+    private ResourceFileReader resourceFileReader;
 
     @BeforeEach
     void setup() {
-        resourceFileReader = new ResourceFileReader();
+        resourceFileReader = new ResourceAsStreamFileReader();
     }
 
     @Test

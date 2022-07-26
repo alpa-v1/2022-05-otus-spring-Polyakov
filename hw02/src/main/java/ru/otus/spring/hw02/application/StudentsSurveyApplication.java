@@ -7,8 +7,8 @@ import ru.otus.spring.hw02.domain.SurveyResult;
 import ru.otus.spring.hw02.services.students.GreetingService;
 import ru.otus.spring.hw02.services.students.StudentIdentificationService;
 import ru.otus.spring.hw02.services.students.StudentInputService;
-import ru.otus.spring.hw02.services.survey.SurveyResultWriter;
 import ru.otus.spring.hw02.services.survey.StudentSurveyService;
+import ru.otus.spring.hw02.services.survey.SurveyResultWriter;
 
 @Service
 @RequiredArgsConstructor

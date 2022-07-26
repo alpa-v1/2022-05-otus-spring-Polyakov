@@ -1,14 +1,12 @@
 package ru.otus.spring.hw02.domain;
 
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
 import static java.lang.String.format;
 import static java.util.Optional.ofNullable;
 
 @Data
-@RequiredArgsConstructor
 public class Student {
 
     private final String firstname;

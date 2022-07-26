@@ -1,4 +1,4 @@
-package ru.otus.spring.hw02.services.questions;
+package ru.otus.spring.hw02.services.questions.impl;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.otus.spring.hw02.domain.Question;
 import ru.otus.spring.hw02.exception.IncorrectQuestionFormatException;
-import ru.otus.spring.hw02.services.questions.impl.CsvQuestionsParser;
+import ru.otus.spring.hw02.services.questions.QuestionsParser;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import static ru.otus.spring.hw02.util.QuestionsDataGenerator.*;
 @DisplayName("Given csv questions parser")
 class CsvQuestionsParserTest {
 
-    CsvQuestionsParser questionsParser;
+    private QuestionsParser questionsParser;
 
     @BeforeEach
     void setup() {

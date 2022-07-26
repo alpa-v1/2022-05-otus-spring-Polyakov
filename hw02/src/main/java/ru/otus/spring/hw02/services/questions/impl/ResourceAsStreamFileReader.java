@@ -3,6 +3,7 @@ package ru.otus.spring.hw02.services.questions.impl;
 import org.springframework.stereotype.Service;
 import ru.otus.spring.hw02.exception.ReadResourceFileException;
 import ru.otus.spring.hw02.exception.ResourceFileNotFoundException;
+import ru.otus.spring.hw02.services.questions.ResourceFileReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,8 +14,9 @@ import java.util.List;
 import static ru.otus.spring.hw02.util.Validations.requireNonNull;
 
 @Service
-public class ResourceFileReader {
+public class ResourceAsStreamFileReader implements ResourceFileReader {
 
+    @Override
     public List<String> readAllLines(String filepath) {
         try (InputStream inputStream = getResourceInputStream(filepath);
              InputStreamReader inputStreamReader = new InputStreamReader(inputStream);

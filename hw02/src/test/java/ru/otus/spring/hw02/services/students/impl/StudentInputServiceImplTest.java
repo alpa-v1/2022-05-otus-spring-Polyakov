@@ -1,4 +1,4 @@
-package ru.otus.spring.hw02.services.students;
+package ru.otus.spring.hw02.services.students.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoSettings;
 import ru.otus.spring.hw02.services.io.InputOutputService;
 import ru.otus.spring.hw02.services.questions.QuestionsWriter;
+import ru.otus.spring.hw02.services.students.StudentInputValidationService;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -16,19 +17,19 @@ import static org.mockito.Mockito.verify;
 
 @MockitoSettings
 @DisplayName("Given student input service")
-class StudentInputServiceTest {
+class StudentInputServiceImplTest {
 
     @Mock
-    InputOutputService io;
+    private InputOutputService io;
 
     @Mock
-    QuestionsWriter questionsWriter;
+    private QuestionsWriter questionsWriter;
 
     @Mock
-    StudentInputValidationService studentInputValidationService;
+    private StudentInputValidationService studentInputValidationService;
 
     @InjectMocks
-    StudentInputService studentInputService;
+    private StudentInputServiceImpl studentInputService;
 
     @Test
     @DisplayName("when user typed his name, then return name as string")
