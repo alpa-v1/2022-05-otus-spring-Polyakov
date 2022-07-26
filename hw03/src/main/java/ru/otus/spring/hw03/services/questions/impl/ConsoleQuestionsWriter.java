@@ -26,13 +26,13 @@ public class ConsoleQuestionsWriter implements QuestionsWriter {
     }
 
     private void writeQuestionValue(String value, int order) {
-        io.write(format("%d. %s\n", order, i18n.getMessage(value)));
+        io.write(format("%d. %s%n", order, i18n.getMessage(value)));
     }
 
     private void writeAnswers(List<Answer> answers) {
         for (int index = 0; index < answers.size(); index++) {
             Answer answer = answers.get(index);
-            io.write(format("\t%d. %s\n", index + 1, i18n.getMessage(answer.getValue())));
+            io.write(format("\t%d. %s%n", index + 1, i18n.getMessage(answer.getValue())));
         }
     }
 }

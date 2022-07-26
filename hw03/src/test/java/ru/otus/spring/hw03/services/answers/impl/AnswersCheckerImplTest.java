@@ -1,4 +1,4 @@
-package ru.otus.spring.hw03.services.answers;
+package ru.otus.spring.hw03.services.answers.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,6 +9,7 @@ import ru.otus.spring.hw03.argumentproviders.SurveyResultArgumentProvider;
 import ru.otus.spring.hw03.domain.Answer;
 import ru.otus.spring.hw03.domain.Student;
 import ru.otus.spring.hw03.domain.SurveyResult;
+import ru.otus.spring.hw03.services.answers.AnswersChecker;
 
 import java.util.List;
 
@@ -16,10 +17,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
 @DisplayName("Given answers checker")
-class AnswersCheckerTest {
+class AnswersCheckerImplTest {
 
     @Autowired
-    AnswersChecker answersChecker;
+    private AnswersChecker answersChecker;
 
     @DisplayName("when student has provided his answers, then count answers and return survey result")
     @ParameterizedTest(name = "{index} - for {2}")

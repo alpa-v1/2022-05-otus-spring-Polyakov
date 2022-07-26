@@ -1,4 +1,4 @@
-package ru.otus.spring.hw03.services.survey;
+package ru.otus.spring.hw03.services.survey.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +11,7 @@ import ru.otus.spring.hw03.domain.Student;
 import ru.otus.spring.hw03.domain.SurveyResult;
 import ru.otus.spring.hw03.services.i18n.I18nService;
 import ru.otus.spring.hw03.services.io.InputOutputService;
+import ru.otus.spring.hw03.services.survey.SurveyResultWriter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -19,19 +20,19 @@ import static org.mockito.Mockito.verify;
 
 @SpringBootTest
 @DisplayName("Given survey result writer")
-class SurveyResultWriterTest {
+class SurveyResultWriterImplTest {
 
     @MockBean
-    I18nService i18n;
+    private I18nService i18n;
 
     @MockBean
-    InputOutputService io;
+    private InputOutputService io;
 
     @Autowired
-    SurveyResultWriter surveyResultWriter;
+    private SurveyResultWriter surveyResultWriter;
 
     @Captor
-    ArgumentCaptor<?> argsCaptor;
+    private ArgumentCaptor<?> argsCaptor;
 
     @Test
     @DisplayName("when getting survey result to write, then content should have number of questions and student full name")

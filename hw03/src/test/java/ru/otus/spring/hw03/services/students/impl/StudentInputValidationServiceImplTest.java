@@ -1,4 +1,4 @@
-package ru.otus.spring.hw03.services.students;
+package ru.otus.spring.hw03.services.students.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.otus.spring.hw03.services.i18n.I18nService;
+import ru.otus.spring.hw03.services.students.StudentInputValidationService;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
@@ -14,13 +15,13 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @DisplayName("Given student input validation service")
-class StudentInputValidationServiceTest {
+class StudentInputValidationServiceImplTest {
 
     @MockBean
-    I18nService i18n;
+    private I18nService i18n;
 
     @Autowired
-    StudentInputValidationService studentInputValidationService;
+    private StudentInputValidationService studentInputValidationService;
 
     @Test
     @DisplayName("when user typed his name in correct format, then return true")
