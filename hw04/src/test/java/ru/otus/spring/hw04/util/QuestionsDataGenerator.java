@@ -7,7 +7,7 @@ import ru.otus.spring.hw04.domain.Question;
 import java.util.List;
 
 @UtilityClass
-public class  QuestionsDataGenerator {
+public class QuestionsDataGenerator {
 
     public static Question getQuestion() {
         return new Question(1, "Is it possible to have multiple inheritance in Java?", List.of(

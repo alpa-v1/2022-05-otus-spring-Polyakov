@@ -1,4 +1,4 @@
-package ru.otus.spring.hw04.services.students;
+package ru.otus.spring.hw04.services.students.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,6 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.otus.spring.hw04.services.io.InputOutputService;
 import ru.otus.spring.hw04.services.questions.QuestionsWriter;
+import ru.otus.spring.hw04.services.students.StudentInputService;
+import ru.otus.spring.hw04.services.students.StudentInputValidationService;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;

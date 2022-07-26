@@ -1,4 +1,4 @@
-package ru.otus.spring.hw04.services.questions;
+package ru.otus.spring.hw04.services.questions.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.otus.spring.hw04.domain.Question;
+import ru.otus.spring.hw04.services.questions.QuestionsParser;
+import ru.otus.spring.hw04.services.questions.QuestionsReader;
+import ru.otus.spring.hw04.services.questions.ResourceFileReader;
 
 import java.util.List;
 
@@ -25,7 +28,7 @@ class CsvFileQuestionsReaderTest {
     private QuestionsParser questionsParser;
 
     @Autowired
-    private QuestionsReader csvFileQuestionsReader;
+    private QuestionsReader questionsReader;
 
     @Test
     @DisplayName("when csv file is present, then read and return all questions as objects")
@@ -34,7 +37,7 @@ class CsvFileQuestionsReaderTest {
         given(questionsParser.parse(anyList())).willReturn(getQuestions());
 
         // when
-        List<Question> questions = csvFileQuestionsReader.read();
+        List<Question> questions = questionsReader.read();
 
         // then
         List<Question> expectedQuestions = getQuestions();

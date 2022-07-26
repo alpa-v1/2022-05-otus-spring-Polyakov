@@ -1,4 +1,4 @@
-package ru.otus.spring.hw04.services.questions;
+package ru.otus.spring.hw04.services.questions.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import ru.otus.spring.hw04.domain.Question;
 import ru.otus.spring.hw04.exception.IncorrectQuestionFormatException;
+import ru.otus.spring.hw04.services.questions.QuestionsParser;
 
 import java.util.List;
 

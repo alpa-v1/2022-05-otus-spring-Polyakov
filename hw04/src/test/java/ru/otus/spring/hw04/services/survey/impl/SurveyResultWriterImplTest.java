@@ -1,4 +1,4 @@
-package ru.otus.spring.hw04.services.survey;
+package ru.otus.spring.hw04.services.survey.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,6 +11,7 @@ import ru.otus.spring.hw04.domain.Student;
 import ru.otus.spring.hw04.domain.SurveyResult;
 import ru.otus.spring.hw04.services.i18n.I18nService;
 import ru.otus.spring.hw04.services.io.InputOutputService;
+import ru.otus.spring.hw04.services.survey.SurveyResultWriter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;
