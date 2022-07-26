@@ -1,4 +1,4 @@
-package ru.otus.spring.hw02.services.survey;
+package ru.otus.spring.hw02.services.survey.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,13 +16,13 @@ import static org.mockito.Mockito.verify;
 
 @MockitoSettings
 @DisplayName("Given survey result writer")
-class SurveyResultWriterTest {
+class SurveyResultWriterImplTest {
 
     @Mock
-    InputOutputService io;
+    private InputOutputService io;
 
     @InjectMocks
-    SurveyResultWriter surveyResultWriter;
+    private SurveyResultWriterImpl surveyResultWriter;
 
     @Test
     @DisplayName("when getting survey result to write, then content should have number of questions and student full name")

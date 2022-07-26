@@ -1,4 +1,4 @@
-package ru.otus.spring.hw02.services.questions;
+package ru.otus.spring.hw02.services.questions.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoSettings;
 import ru.otus.spring.hw02.domain.Question;
-import ru.otus.spring.hw02.services.questions.impl.CsvFileQuestionsReader;
-import ru.otus.spring.hw02.services.questions.impl.CsvQuestionsParser;
-import ru.otus.spring.hw02.services.questions.impl.ResourceFileReader;
+import ru.otus.spring.hw02.services.questions.QuestionsParser;
+import ru.otus.spring.hw02.services.questions.QuestionsReader;
+import ru.otus.spring.hw02.services.questions.ResourceFileReader;
 
 import java.util.List;
 
@@ -22,16 +22,16 @@ import static ru.otus.spring.hw02.util.QuestionsDataGenerator.getQuestions;
 class CsvFileQuestionsReaderTest {
 
     @Mock
-    ResourceFileReader resourceFileReader;
+    private ResourceFileReader resourceFileReader;
 
     @Mock
-    CsvQuestionsParser questionsParser;
+    private QuestionsParser questionsParser;
 
-    CsvFileQuestionsReader csvFileQuestionsReader;
+    private QuestionsReader questionsReader;
 
     @BeforeEach
     void setup() {
-        csvFileQuestionsReader = new CsvFileQuestionsReader("/questions.csv", questionsParser, resourceFileReader);
+        questionsReader = new CsvFileQuestionsReader("/questions.csv", questionsParser, resourceFileReader);
     }
 
     @Test
@@ -41,7 +41,7 @@ class CsvFileQuestionsReaderTest {
         given(questionsParser.parse(anyList())).willReturn(getQuestions());
 
         // when
-        List<Question> questions = csvFileQuestionsReader.read();
+        List<Question> questions = questionsReader.read();
 
         // then
         List<Question> expectedQuestions = getQuestions();

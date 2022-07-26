@@ -1,4 +1,4 @@
-package ru.otus.spring.hw02.services.students;
+package ru.otus.spring.hw02.services.students.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -14,13 +14,13 @@ import static org.mockito.Mockito.verify;
 
 @MockitoSettings
 @DisplayName("Given greeting service")
-class GreetingServiceTest {
+class GreetingServiceImplTest {
 
     @Mock
-    InputOutputService io;
+    private InputOutputService io;
 
     @InjectMocks
-    GreetingService greetingService;
+    private GreetingServiceImpl greetingService;
 
     @Test
     @DisplayName("when getting student with amount of questions, then write student full name and amount of questions")

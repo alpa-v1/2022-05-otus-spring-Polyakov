@@ -1,4 +1,4 @@
-package ru.otus.spring.hw02.services.answers;
+package ru.otus.spring.hw02.services.answers.impl;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -8,19 +8,20 @@ import ru.otus.spring.hw02.argumentproviders.SurveyResultArgumentProvider;
 import ru.otus.spring.hw02.domain.Answer;
 import ru.otus.spring.hw02.domain.Student;
 import ru.otus.spring.hw02.domain.SurveyResult;
+import ru.otus.spring.hw02.services.answers.AnswersChecker;
 
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DisplayName("Given answers checker")
-class AnswersCheckerTest {
+class AnswersCheckerImplTest {
 
-    AnswersChecker answersChecker;
+    private AnswersChecker answersChecker;
 
     @BeforeEach
     void setup() {
-        answersChecker = new AnswersChecker(4);
+        answersChecker = new AnswersCheckerImpl(4);
     }
 
     @DisplayName("when student has provided his answers, then count answers and return survey result")
