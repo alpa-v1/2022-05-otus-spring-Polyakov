@@ -7,6 +7,7 @@ import ru.otus.spring.hw03.config.properties.ParserProperties;
 import ru.otus.spring.hw03.domain.Answer;
 import ru.otus.spring.hw03.domain.Question;
 import ru.otus.spring.hw03.exception.IncorrectQuestionFormatException;
+import ru.otus.spring.hw03.services.questions.QuestionsParser;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -16,7 +17,7 @@ import static java.lang.String.format;
 import static ru.otus.spring.hw03.util.Validations.*;
 
 @Service
-public class CsvQuestionsParser {
+public class CsvQuestionsParser implements QuestionsParser {
 
     private static final int VALID_SPLIT_LINE_LENGTH = 3;
 
@@ -26,6 +27,7 @@ public class CsvQuestionsParser {
         this.parserProperties = properties.getParser();
     }
 
+    @Override
     public List<Question> parse(List<String> lines) {
         requireNonEmpty(lines, () -> new IncorrectQuestionFormatException("Questions should not be empty"));
         return lines.stream()
@@ -36,6 +38,7 @@ public class CsvQuestionsParser {
                 .toList();
     }
 
+    @Override
     public Question parse(String line) {
         String[] questionElements = line.split(parserProperties.getQuestionsSeparator());
         requireSize(questionElements, VALID_SPLIT_LINE_LENGTH,
