@@ -1,4 +1,4 @@
-package ru.otus.spring.hw04.services.answers;
+package ru.otus.spring.hw04.services.answers.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -9,6 +9,7 @@ import ru.otus.spring.hw04.argumentproviders.SurveyResultArgumentProvider;
 import ru.otus.spring.hw04.domain.Answer;
 import ru.otus.spring.hw04.domain.Student;
 import ru.otus.spring.hw04.domain.SurveyResult;
+import ru.otus.spring.hw04.services.answers.AnswersChecker;
 
 import java.util.List;
 

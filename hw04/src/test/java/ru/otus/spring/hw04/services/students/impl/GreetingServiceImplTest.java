@@ -1,4 +1,4 @@
-package ru.otus.spring.hw04.services.students;
+package ru.otus.spring.hw04.services.students.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,6 +10,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.otus.spring.hw04.domain.Student;
 import ru.otus.spring.hw04.services.i18n.I18nService;
 import ru.otus.spring.hw04.services.io.InputOutputService;
+import ru.otus.spring.hw04.services.students.GreetingService;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyString;

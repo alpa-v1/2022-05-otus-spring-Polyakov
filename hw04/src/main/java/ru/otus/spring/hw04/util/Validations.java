@@ -26,7 +26,7 @@ public class Validations {
 
     public static void requireBoolean(String line, Supplier<? extends RuntimeException> exception) {
         test(line, string -> StringUtils.isNotEmpty(string)
-                             && !(string.equalsIgnoreCase("true") || string.equalsIgnoreCase("false")), exception);
+                && !(string.equalsIgnoreCase("true") || string.equalsIgnoreCase("false")), exception);
     }
 
     private static <T> void test(T data, Predicate<T> predicate, Supplier<? extends RuntimeException> exception) {
