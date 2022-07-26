@@ -16,6 +16,8 @@ import static java.lang.String.format;
 @RequiredArgsConstructor
 public class StudentInputServiceImpl implements StudentInputService {
 
+    private static final String INPUT_FORMAT = "%s - ";
+
     private final I18nService i18n;
     private final InputOutputService io;
     private final QuestionsWriter questionsWriter;
@@ -23,11 +25,11 @@ public class StudentInputServiceImpl implements StudentInputService {
 
     @Override
     public String askName(String type) {
-        io.write(format("%s - ", type));
+        io.write(format(INPUT_FORMAT, type));
         String name = io.readLine();
         while (!studentInputValidationService.validateStudentName(name)) {
-            io.write(format("%s\n", i18n.getMessage("output.student.input.incorrect-format", name)));
-            io.write(format("%s - ", type));
+            io.write(format("%s%n", i18n.getMessage("output.student.input.incorrect-format", name)));
+            io.write(format(INPUT_FORMAT, type));
             name = io.readLine();
         }
         return name;
@@ -36,11 +38,11 @@ public class StudentInputServiceImpl implements StudentInputService {
     @Override
     public Answer askQuestion(Question question) {
         questionsWriter.write(question);
-        io.write(format("%s - ", i18n.getMessage("output.student.input.answer")));
+        io.write(format(INPUT_FORMAT, i18n.getMessage("output.student.input.answer")));
         String indexOfAnswer = io.readLine();
         while (!studentInputValidationService.validateSelectedAnswer(indexOfAnswer, question.getAnswersSize())) {
-            io.write(format("%s\n", i18n.getMessage("output.student.input.incorrect-format", indexOfAnswer)));
-            io.write(format("%s - ", i18n.getMessage("output.student.input.answer")));
+            io.write(format("%s%n", i18n.getMessage("output.student.input.incorrect-format", indexOfAnswer)));
+            io.write(format(INPUT_FORMAT, i18n.getMessage("output.student.input.answer")));
             indexOfAnswer = io.readLine();
         }
         return question.getAnswer(Integer.parseInt(indexOfAnswer) - 1);

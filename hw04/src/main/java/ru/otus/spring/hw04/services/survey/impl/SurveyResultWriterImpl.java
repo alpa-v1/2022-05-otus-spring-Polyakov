@@ -19,13 +19,13 @@ public class SurveyResultWriterImpl implements SurveyResultWriter {
 
     @Override
     public void write(SurveyResult surveyResult) {
-        io.write(format("%s\n", i18n.getMessage("output.survey.finished")));
+        io.write(format("%s%n", i18n.getMessage("output.survey.finished")));
         Student student = surveyResult.getStudent();
         if (surveyResult.isPassed()) {
-            io.write(format("%s\n", i18n.getMessage("output.survey.passed", student.getFullName())));
+            io.write(format("%s%n", i18n.getMessage("output.survey.passed", student.getFullName())));
         } else {
-            io.write(format("%s\n", i18n.getMessage("output.survey.failed", student.getFullName())));
+            io.write(format("%s%n", i18n.getMessage("output.survey.failed", student.getFullName())));
         }
-        io.write(format("%s\n\n", i18n.getMessage("output.survey.number-of-correct-answers", surveyResult.getCorrectAnswers())));
+        io.write(format("%s%n%n", i18n.getMessage("output.survey.number-of-correct-answers", surveyResult.getCorrectAnswers())));
     }
 }

@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @DisplayName("Given students survey shell controller")
-public class StudentsSurveyShellControllerTest {
+class StudentsSurveyShellControllerTest {
 
     @Autowired
     private Shell shell;

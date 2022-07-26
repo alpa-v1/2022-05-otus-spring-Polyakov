@@ -16,11 +16,11 @@ public class GreetingServiceImpl implements GreetingService {
 
     @Override
     public void greet() {
-        io.write(String.format("%s\n", i18n.getMessage("output.greeting.anonymous")));
+        io.write(String.format("%s%n", i18n.getMessage("output.greeting.anonymous")));
     }
 
     @Override
     public void greet(Student student, int numberOfQuestions) {
-        io.write(String.format("%s\n", i18n.getMessage("output.greeting.identified", student.getFullName(), numberOfQuestions)));
+        io.write(String.format("%s%n", i18n.getMessage("output.greeting.identified", student.getFullName(), numberOfQuestions)));
     }
 }
