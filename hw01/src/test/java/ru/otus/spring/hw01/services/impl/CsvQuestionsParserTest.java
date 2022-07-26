@@ -1,22 +1,22 @@
-package ru.otus.spring.hw01.services;
+package ru.otus.spring.hw01.services.impl;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.otus.spring.hw01.domain.Question;
-import ru.otus.spring.hw01.services.impl.CsvQuestionsParser;
+import ru.otus.spring.hw01.services.QuestionsParser;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("Questions parser")
-class QuestionsParserTest {
+@DisplayName("Csv questions parser")
+class CsvQuestionsParserTest {
 
     @Test
     @DisplayName("should correctly parse lines to questions")
     void shouldCorrectlyParseLinesToQuestions() {
         // given
-        CsvQuestionsParser questionsParser = new CsvQuestionsParser(",", ";");
+        QuestionsParser questionsParser = new CsvQuestionsParser(",", ";");
 
         // when
         List<Question> questions = questionsParser.parse(getQuestionLines());
