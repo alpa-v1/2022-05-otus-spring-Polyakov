@@ -10,5 +10,7 @@ Alexey Polyakov / Алексей Поляков<br>
 1. hw01<br>
 2. hw02<br>
 3. hw03<br>
+4. hw04<br>
+5. hw05<br>
 
 Домашнее задание выполнено для курса - "Разработчик на Spring Framework" - https://otus.ru/lessons/javaspring/
