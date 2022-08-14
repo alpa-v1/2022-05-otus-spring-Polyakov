@@ -30,6 +30,11 @@ public class CommentsShellController {
         return commentsService.findAll();
     }
 
+    @ShellMethod(value = "Finds comments by book id", key = {"comments_by_book_id", "c_b_id"})
+    public List<Comment> findByCommentsByBookId(@ShellOption("-i") long id) {
+        return commentsService.findCommentsByBookId(id);
+    }
+
     @ShellMethod(value = "Finds comment by id", key = {"comment_by_id", "c_id"})
     public Comment findById(@ShellOption("-i") long id) {
         return commentsService.findById(id);

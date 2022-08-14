@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import ru.otus.spring.hw06.core.transactionmanager.TransactionManagerSpring;
 import ru.otus.spring.hw06.domain.Book;
 import ru.otus.spring.hw06.domain.Genre;
 import ru.otus.spring.hw06.repository.BookRepository;
@@ -14,7 +13,7 @@ import ru.otus.spring.hw06.services.BooksService;
 import static org.mockito.Mockito.verify;
 
 @DisplayName("Given books service impl")
-@SpringBootTest(classes = {BooksServiceImpl.class, TransactionManagerSpring.class})
+@SpringBootTest(classes = {BooksServiceImpl.class})
 class BooksServiceImplTest {
 
     @MockBean

@@ -7,3 +7,7 @@ spring:
     locations: classpath:/db/migration/ddl,classpath:/db/migration/test/dml
   main:
     lazy-initialization: true
+    allow-circular-references: true
+  shell:
+    interactive:
+      enabled: false

@@ -2,7 +2,7 @@ package ru.otus.spring.hw06.services.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.otus.spring.hw06.core.transactionmanager.TransactionManager;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.spring.hw06.domain.Author;
 import ru.otus.spring.hw06.repository.AuthorRepository;
 import ru.otus.spring.hw06.services.AuthorsService;
@@ -14,30 +14,34 @@ import java.util.List;
 public class AuthorsServiceImpl implements AuthorsService {
 
     private final AuthorRepository authorRepository;
-    private final TransactionManager transactionManager;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Author> findAll() {
-        return transactionManager.doInReadOnlyTransaction(authorRepository::findAll);
+        return authorRepository.findAll();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Author findById(long id) {
-        return transactionManager.doInReadOnlyTransaction(() -> authorRepository.findById(id));
+        return authorRepository.findById(id);
     }
 
     @Override
+    @Transactional
     public Author create(Author author) {
-        return transactionManager.doInTransaction(() -> authorRepository.create(author));
+        return authorRepository.create(author);
     }
 
     @Override
+    @Transactional
     public Author update(Author author) {
-        return transactionManager.doInTransaction(() -> authorRepository.update(author));
+        return authorRepository.update(author);
     }
 
     @Override
+    @Transactional
     public void deleteById(long id) {
-        transactionManager.doInTransaction(() -> authorRepository.deleteById(id));
+        authorRepository.deleteById(id);
     }
 }

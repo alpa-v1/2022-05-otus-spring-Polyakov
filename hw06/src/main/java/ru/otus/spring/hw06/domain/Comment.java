@@ -27,6 +27,11 @@ public class Comment {
     @JoinColumn(name = "book_id")
     private Book book;
 
+    public Comment(Long id, String text) {
+        this.id = id;
+        this.text = text;
+    }
+
     public Comment(String text, Book book) {
         this.text = text;
         this.book = book;

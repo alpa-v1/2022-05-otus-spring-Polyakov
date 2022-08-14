@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import ru.otus.spring.hw06.core.transactionmanager.TransactionManagerSpring;
 import ru.otus.spring.hw06.domain.Author;
 import ru.otus.spring.hw06.repository.AuthorRepository;
 import ru.otus.spring.hw06.services.AuthorsService;
@@ -13,7 +12,7 @@ import ru.otus.spring.hw06.services.AuthorsService;
 import static org.mockito.Mockito.verify;
 
 @DisplayName("Given authors service impl")
-@SpringBootTest(classes = {AuthorsServiceImpl.class, TransactionManagerSpring.class})
+@SpringBootTest(classes = {AuthorsServiceImpl.class})
 class AuthorsServiceImplTest {
 
     @MockBean

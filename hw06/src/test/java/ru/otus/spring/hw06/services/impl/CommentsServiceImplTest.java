@@ -5,17 +5,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import ru.otus.spring.hw06.core.transactionmanager.TransactionManagerSpring;
 import ru.otus.spring.hw06.domain.Book;
 import ru.otus.spring.hw06.domain.Comment;
+import ru.otus.spring.hw06.repository.BookRepository;
 import ru.otus.spring.hw06.repository.CommentRepository;
 import ru.otus.spring.hw06.services.CommentsService;
 
 import static org.mockito.Mockito.verify;
 
 @DisplayName("Given comments service impl")
-@SpringBootTest(classes = {CommentsServiceImpl.class, TransactionManagerSpring.class})
+@SpringBootTest(classes = {CommentsServiceImpl.class})
 class CommentsServiceImplTest {
+
+    @MockBean
+    private BookRepository bookRepository;
 
     @MockBean
     private CommentRepository commentRepository;
@@ -35,6 +38,13 @@ class CommentsServiceImplTest {
     void shouldCallCommentRepositoryToFindAuthorById() {
         commentsService.findById(1);
         verify(commentRepository).findById(1);
+    }
+
+    @Test
+    @DisplayName("should call BookRepository to find comments by book id")
+    void shouldCallBookRepositoryToFindCommentsByBookId() {
+        commentsService.findCommentsByBookId(1);
+        verify(bookRepository).findById(1);
     }
 
     @Test

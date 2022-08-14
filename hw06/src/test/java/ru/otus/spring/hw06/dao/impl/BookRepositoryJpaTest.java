@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import ru.otus.spring.hw06.domain.Book;
+import ru.otus.spring.hw06.domain.Comment;
 import ru.otus.spring.hw06.domain.Genre;
 import ru.otus.spring.hw06.repository.BookRepository;
 import ru.otus.spring.hw06.repository.impl.BookRepositoryJpa;
@@ -33,6 +34,13 @@ class BookRepositoryJpaTest {
     @DisplayName("should return book by id")
     void shouldReturnBookById() {
         assertThat(bookRepository.findById(1)).isEqualTo(getExpectedBook());
+    }
+
+    @Test
+    @DisplayName("should return comments by book id")
+    void shouldReturnCommentsByBookId() {
+        Book book = bookRepository.findById(1);
+        assertThat(book.getComments()).hasSameElementsAs(getExpectedComments());
     }
 
     @Test
@@ -79,6 +87,14 @@ class BookRepositoryJpaTest {
                 new Book(13L, "Eight Below", new Genre(3L, "thriller")),
                 new Book(14L, "Riders of the Purple Sage", new Genre(8L, "documentary")),
                 new Book(15L, "Harry and Tonto", new Genre(10L, "fantasy"))
+        );
+    }
+
+    List<Comment> getExpectedComments() {
+        return of(
+                new Comment(1L, "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque."),
+                new Comment(2L, "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst."),
+                new Comment(3L, "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.")
         );
     }
 

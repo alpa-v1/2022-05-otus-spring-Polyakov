@@ -2,9 +2,9 @@ package ru.otus.spring.hw06.services.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.otus.spring.hw06.core.transactionmanager.TransactionManager;
-import ru.otus.spring.hw06.repository.BookRepository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.spring.hw06.domain.Book;
+import ru.otus.spring.hw06.repository.BookRepository;
 import ru.otus.spring.hw06.services.BooksService;
 
 import java.util.List;
@@ -14,30 +14,34 @@ import java.util.List;
 public class BooksServiceImpl implements BooksService {
 
     private final BookRepository bookRepository;
-    private final TransactionManager transactionManager;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Book> findAll() {
-        return transactionManager.doInReadOnlyTransaction(bookRepository::findAll);
+        return bookRepository.findAll();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Book findById(long id) {
-        return transactionManager.doInReadOnlyTransaction(() -> bookRepository.findById(id));
+        return bookRepository.findById(id);
     }
 
     @Override
+    @Transactional
     public Book create(Book book) {
-        return transactionManager.doInTransaction(() -> bookRepository.create(book));
+        return bookRepository.create(book);
     }
 
     @Override
+    @Transactional
     public Book update(Book book) {
-        return transactionManager.doInTransaction(() -> bookRepository.update(book));
+        return bookRepository.update(book);
     }
 
     @Override
+    @Transactional
     public void deleteById(long id) {
-        transactionManager.doInTransaction(() -> bookRepository.deleteById(id));
+        bookRepository.deleteById(id);
     }
 }

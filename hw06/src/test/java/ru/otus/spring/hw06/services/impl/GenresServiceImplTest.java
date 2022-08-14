@@ -5,15 +5,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import ru.otus.spring.hw06.core.transactionmanager.TransactionManagerSpring;
-import ru.otus.spring.hw06.repository.GenreRepository;
 import ru.otus.spring.hw06.domain.Genre;
+import ru.otus.spring.hw06.repository.GenreRepository;
 import ru.otus.spring.hw06.services.GenresService;
 
 import static org.mockito.Mockito.verify;
 
 @DisplayName("Given genres service impl")
-@SpringBootTest(classes = {GenresServiceImpl.class, TransactionManagerSpring.class})
+@SpringBootTest(classes = {GenresServiceImpl.class})
 class GenresServiceImplTest {
 
     @MockBean
