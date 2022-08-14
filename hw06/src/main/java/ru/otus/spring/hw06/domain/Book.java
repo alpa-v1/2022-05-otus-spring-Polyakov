@@ -12,10 +12,10 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
+@Table(name = "books")
 @Getter
 @Setter
 @ToString
-@Table(name = "books")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Book {

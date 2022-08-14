@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "genres")
 @Getter
 @Setter
 @ToString
-@Table(name = "genres")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Genre {

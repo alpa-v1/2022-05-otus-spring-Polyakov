@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "authors")
 @Getter
 @Setter
 @ToString
-@Table(name = "authors")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Author {

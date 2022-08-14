@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Table(name = "comments")
 @Getter
 @Setter
 @ToString
-@Table(name = "comments")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Comment {
